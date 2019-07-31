@@ -15,8 +15,8 @@ This application performs the below functionalities:
 8.  Power
 9.  Modulus
 10. Length of a Vector
-11: Cosine of an angle in radians,
-12: Sine of an angle in radians,
+11: Cosine of an angle in radians
+12: Sine of an angle in radians
 13: Tan of an angle in radians
 14. Inverse cosine
 15. Inverse sine
