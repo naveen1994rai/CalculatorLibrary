@@ -41,7 +41,8 @@ pytest-cov
 flake8 
 
 #Workdir
-cloned git repo
+git clone https://github.com/naveen1994rai/CalculatorLibrary.git
+cd CalculatorLibrary
 
 #Usage
 python calculator.py
