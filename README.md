@@ -27,6 +27,7 @@ This application performs the below functionalities:
 17. Logarathmic for any given base, default base is e.
 
 #Memory register
+
 18. Store a value in memory
 19. Clear the memory
 20. Performing calculations with stored value
@@ -34,21 +35,27 @@ This application performs the below functionalities:
 
 #Prerequisistes
 #unit testing
+
 pytest
 pytest-cov
 
 #linter
+
 flake8  
 
 #Workdir
+
 git clone https://github.com/naveen1994rai/CalculatorLibrary.git
 cd CalculatorLibrary
 
 #Usage
+
 python calculator.py
 
 #Automated tests
+
 pytest -v --cov
 
 #Linting check
+
 flake8 --statistics
