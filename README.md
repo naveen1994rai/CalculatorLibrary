@@ -1,10 +1,9 @@
 # CalculatorLibrary
 Calculator using python with unit tests
-
-
 This application performs the below functionalities:
 
 #Basic arithmetic operations
+
 1.  Addition
 2.  Subtraction
 3.  Multiplication
@@ -15,6 +14,7 @@ This application performs the below functionalities:
 8.  Power
 9.  Modulus
 10. Length of a Vector
+
 
 #Some trigonometric functionalities
 
@@ -33,28 +33,28 @@ This application performs the below functionalities:
 20. Performing calculations with stored value
 
 
-#Prerequisistes
-#unit testing
+#Prerequisistes for linting and testing
 
 pytest
 pytest-cov
-
-#linter
-
 flake8  
+
 
 #Workdir
 
 git clone https://github.com/naveen1994rai/CalculatorLibrary.git
 cd CalculatorLibrary
 
+
 #Usage
 
 python calculator.py
 
+
 #Automated tests
 
 pytest -v --cov
+
 
 #Linting check
 
