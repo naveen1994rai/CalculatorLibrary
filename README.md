@@ -24,7 +24,7 @@ This application performs the below functionalities:
 14. Inverse cosine
 15. Inverse sine
 16. Inverse tan
-17. Logarathmic for any given base, default base is e.
+17. Logarathmic for any given base, default base is e
 
 #Memory register
 18. Store a value in memory
