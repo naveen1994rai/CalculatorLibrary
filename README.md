@@ -30,3 +30,24 @@ This application performs the below functionalities:
 18. Store a value in memory
 19. Clear the memory
 20. Performing calculations with stored value
+
+
+#Prerequisistes
+#unit testing
+pytest
+pytest-cov
+
+#linter
+flake8 
+
+#Workdir
+cloned git repo
+
+#Usage
+python calculator.py
+
+#Automated tests
+pytest -v --cov
+
+#Linting check
+flake8 --statistics
