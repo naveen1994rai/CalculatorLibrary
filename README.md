@@ -20,6 +20,12 @@ This application performs the below functionalities:
 
 11. Cosine of an angle in radians/degrees
 12. Sine of an angle in radians/degrees
+13. Tan of an angle in radians
+14. Inverse cosine
+15. Inverse sine
+16. Inverse tan
+17. Logarathmic for any given base, default base is e.
+
 #Memory register
 18. Store a value in memory
 19. Clear the memory
