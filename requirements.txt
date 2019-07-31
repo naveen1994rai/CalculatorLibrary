@@ -1,0 +1,6 @@
+#For automated testing of the calculator module
+pytest
+pytest-cov
+
+#For linting, can choose any linter of your choice
+flake8
