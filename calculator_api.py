@@ -1,12 +1,64 @@
 #!/usr/bin/ python
 
+
+'''
+TO-DO
+Include sql execution for each function
+Generate reports based off date guven by the user
+'''
+
+
+
+
 from flask import (Flask, jsonify, request, abort, render_template)
 import math
 import re
+import sqlite3 as lite
+import sys
+from datetime import datetime
+import time
 
 app = Flask(__name__)
 
 Memory_store=""
+Operations_count=0
+
+con=None
+
+
+try:
+    con = lite.connect('calc.db')
+    cur = con.cursor()  
+    cur.execute('SELECT SQLITE_VERSION()')
+    
+    cur.execute("CREATE TABLE IF NOT EXISTS Calculations(Id INT, Operation TEXT, Count INT, Date TEXT)")
+    '''
+    cur.execute("INSERT INTO Operations VALUES(1,'Add',2,datetime('now','localtime'))")
+    
+    cur.execute("INSERT INTO Users VALUES(2,'Sonya')")
+    cur.execute("INSERT INTO Users VALUES(3,'Greg')")
+    
+    cur.execute("SELECT * FROM Users")
+    rows = cur.fetchall()
+
+    for row in rows:
+        print(row)
+    print(type(row))
+    #print(data)
+    #print("SQLite version: %s" % data)   
+    '''              
+except lite.Error as e:   
+    print("Error %s:" % e.args[0])
+    sys.exit(1)
+
+finally:    
+    if con:
+        con.close()
+
+
+
+
+
 
 
 def re_Check(string): 
@@ -34,6 +86,7 @@ def home_page():
 
 @app.route('/add', methods=['POST'])
 def add_args():
+    global Operations_count
     if not request.json:
         abort(400)
     try:
@@ -42,6 +95,13 @@ def add_args():
         if(re_Check(str(arg1))==0 and re_Check(str(arg2))==0):
 
             answer = arg1 + arg2
+            with lite.connect("calc.db") as con:
+                cur = con.cursor()
+                time = datetime.now().strftime("%d %B %Y")
+                cur.execute("insert into Calculations values (?,?,?,?)", (Operations_count, 'Add', 1, time))
+                con.commit()
+                Operations_count+=1
+            #cur.execute("INSERT INTO Calculations VALUES(Operations_count, 'Add', 1, datetime('now','localtime')")
             return (jsonify({'answer':answer}), 200)
     except KeyError:
         abort(400)
@@ -49,6 +109,7 @@ def add_args():
 
 @app.route('/sub', methods=['POST'])
 def sub_args():
+    global Operations_count
     if not request.json:
         abort(400)
     try:
@@ -63,6 +124,7 @@ def sub_args():
 
 @app.route('/mul', methods=['POST'])
 def mul_args():
+    global Operations_count
     if not request.json:
         abort(400)
     try:
@@ -77,6 +139,7 @@ def mul_args():
 
 @app.route('/div', methods=['POST'])
 def div_args():
+    global Operations_count
     if not request.json:
         abort(400)
     try:
@@ -91,6 +154,7 @@ def div_args():
 
 @app.route('/sqrt', methods=['POST'])
 def sqrt_args():
+    global Operations_count
     if not request.json:
         abort(400)
     try:
@@ -105,6 +169,7 @@ def sqrt_args():
 
 @app.route('/crt', methods=['POST'])
 def crt_args():
+    global Operations_count
     if not request.json:
         abort(400)
     try:
@@ -331,7 +396,20 @@ def var_Store_args():
 def print_Store_args():
     global Memory_store
     try:
-            return (jsonify({'answer':Memory_store}), 200)
+        with lite.connect("calc.db") as con:
+            cur = con.cursor()
+            time = datetime.now().strftime("%d %B %Y")
+            cur.execute("SELECT * FROM Calculations")
+            rows = cur.fetchall()
+
+
+            with open("./check_report.txt", 'a+') as log:
+                for row in rows:
+                    log.write(row)
+            
+            
+            con.commit()
+        return (jsonify({'answer':Memory_store,'table query':row}), 200)
     except KeyError:
         abort(400)
 
@@ -357,4 +435,5 @@ def add_sub_Store_args():
 
 
 if __name__ == "__main__":
+    
     app.run(debug=True)
