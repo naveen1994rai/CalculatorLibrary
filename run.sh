@@ -10,4 +10,5 @@ echo "Checking for required python packages and installing  if not present"
 echo
 
 echo "$package_check"
-if [ $? 
+if [ $? -eq 0 ]; then
+
