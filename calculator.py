@@ -37,7 +37,6 @@ import time
 import csv
 
 
-
 Memory_store=""
 DATEFORMAT = '%Y-%m-%d'
 LOGPATH="./reports/"
@@ -267,10 +266,10 @@ def sqrt(number=0):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['sqrt']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['sqrt']+=1
         store_result=str(input("Do you want to store this result, yes or no ?\n"))
         if store_result == "yes":
             Memory_store=str(result)
@@ -304,10 +303,10 @@ def crt(number=0):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['crt']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['crt']+=1
         store_result=str(input("Do you want to store this result, yes or no ?\n"))
         if store_result == "yes":
             Memory_store=str(result)
@@ -341,10 +340,10 @@ def factorial(number=0):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['factorial']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['factorial']+=1
         store_result=str(input("Do you want to store this result, yes or no ?\n"))
         if store_result == "yes":
             Memory_store=str(result)
@@ -380,10 +379,10 @@ def power(base=0,power=0):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['power']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['power']+=1
         store_result=str(input("Do you want to store this result, yes or no ?\n"))
         if store_result == "yes":
             Memory_store=str(result)
@@ -420,10 +419,10 @@ def modulus(num1=0,num2=0):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['modulus']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['modulus']+=1
         store_result=str(input("Do you want to store this result, yes or no ?\n"))
         if store_result == "yes":
             Memory_store=str(result)
@@ -460,10 +459,10 @@ def vector_Length(num1=0,num2=0):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['vector']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['vector']+=1
         store_result=str(input("Do you want to store this result, yes or no ?\n"))
         if store_result == "yes":
             Memory_store=str(result)
@@ -511,10 +510,10 @@ def cos(format='degrees',angle=0):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['cos']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['cos']+=1
         store_result=str(input("Do you want to store this result, yes or no ?\n"))
         if store_result == "yes":
             Memory_store=str(result)
@@ -562,10 +561,10 @@ def sin(format='degrees',angle=0):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['sin']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['sin']+=1
         store_result=str(input("Do you want to store this result, yes or no ?\n"))
         if store_result == "yes":
             Memory_store=str(result)
@@ -613,10 +612,10 @@ def tan(format='degrees',angle=0):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['tan']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['tan']+=1
         store_result=str(input("Do you want to store this result, yes or no ?\n"))
         if store_result == "yes":
             Memory_store=str(result)
@@ -649,10 +648,10 @@ def acos(number):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['acos']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['acos']+=1
         store_result=str(input("Do you want to store this result, yes or no ?\n"))
         if store_result == "yes":
             Memory_store=str(result)
@@ -683,10 +682,10 @@ def asin(number):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['asin']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['asin']+=1
         store_result=str(input("Do you want to store this result, yes or no ?\n"))
         if store_result == "yes":
             Memory_store=str(result)
@@ -719,10 +718,10 @@ def atan(number):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['atan']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['atan']+=1
         store_result=str(input("Do you want to store this result, yes or no ?\n"))
         if store_result == "yes":
             Memory_store=str(result)
@@ -747,10 +746,10 @@ def var_Remove():
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['var_Remove']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['var_Remove']+=1
 
 
 def var_Store(number):
@@ -774,10 +773,10 @@ def var_Store(number):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['var_Store']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['var_Store']+=1
 
 def print_Store():
     global Memory_store, last_operation_date
@@ -787,10 +786,10 @@ def print_Store():
         generate_Reports()
         for k,v in Operations_track.items():
             Operations_track[k]=0
-        Operations_track['division']+=1
+        Operations_track['print_Store']+=1
         last_operation_date = operation_date
     elif operation_date == last_operation_date:
-        Operations_track['division']+=1
+        Operations_track['print_Store']+=1
 
 
 def log(num1=0,num2=0):
@@ -826,10 +825,10 @@ def log(num1=0,num2=0):
             generate_Reports()
             for k,v in Operations_track.items():
                 Operations_track[k]=0
-            Operations_track['division']+=1
+            Operations_track['log']+=1
             last_operation_date = operation_date
         elif operation_date == last_operation_date:
-            Operations_track['division']+=1
+            Operations_track['log']+=1
         store_result=str(input("Do you want to store this result, yes or no ?\n"))
         if store_result == "yes":
             Memory_store=str(result)
@@ -870,10 +869,10 @@ def add_subtract_Store(operation="add",num1=0,num2=0):
                 generate_Reports()
                 for k,v in Operations_track.items():
                     Operations_track[k]=0
-                Operations_track['division']+=1
+                Operations_track['add_subtract_Store']+=1
                 last_operation_date = operation_date
             elif operation_date == last_operation_date:
-                Operations_track['division']+=1
+                Operations_track['add_subtract_Store']+=1
             store_result=str(input("Do you want to store this result, yes or no ?\n"))
                 
             if store_result == "yes":
@@ -888,10 +887,10 @@ def add_subtract_Store(operation="add",num1=0,num2=0):
                 generate_Reports()
                 for k,v in Operations_track.items():
                     Operations_track[k]=0
-                Operations_track['division']+=1
+                Operations_track['add_subtract_Store']+=1
                 last_operation_date = operation_date
             elif operation_date == last_operation_date:
-                Operations_track['division']+=1
+                Operations_track['add_subtract_Store']+=1
             store_result=str(input("Do you want to store this result, yes or no ?\n"))
                 
             if store_result == "yes":
