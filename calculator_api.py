@@ -3,8 +3,7 @@
 
 '''
 TO-DO
-Include sql execution for each function
-Generate reports based off date guven by the user
+Code cleaning
 '''
 
 
