@@ -12,6 +12,7 @@ Generate reports based off date guven by the user
 
 from flask import (Flask, jsonify, request, abort, render_template)
 import math
+from collections import OrderedDict
 import re
 import sqlite3 as lite
 import sys
@@ -21,9 +22,35 @@ import time
 app = Flask(__name__)
 
 Memory_store=""
-Operations_count=0
+Operations_count=1
 
 con=None
+Operations_track = OrderedDict()
+
+Operations_track={'addition':0,
+'subtraction':0,
+'multiplication':0,
+'division':0,
+'sqrt':0,
+'crt':0,
+'factorial':0,
+'power':0,
+'modulus':0,
+'vector':0,
+'cos':0,
+'sin':0,
+'tan':0,
+'acos':0,
+'asin':0,
+'atan':0,
+'log':0,
+'var_Store':0,
+'print_Store':0,
+'var_Remove':0,
+'add_subtract_Store':0}
+
+
+
 
 
 try:
@@ -95,10 +122,11 @@ def add_args():
         if(re_Check(str(arg1))==0 and re_Check(str(arg2))==0):
 
             answer = arg1 + arg2
+            Operations_track['addition']+=1
             with lite.connect("calc.db") as con:
                 cur = con.cursor()
                 time = datetime.now().strftime("%d %B %Y")
-                cur.execute("insert into Calculations values (?,?,?,?)", (Operations_count, 'Add', 1, time))
+                cur.execute("insert into Calculations values (?,?,?,?)", (Operations_count, 'Add', Operations_track['addition'], time))
                 con.commit()
                 Operations_count+=1
             #cur.execute("INSERT INTO Calculations VALUES(Operations_count, 'Add', 1, datetime('now','localtime')")
@@ -118,6 +146,13 @@ def sub_args():
         if(re_Check(str(arg1))==0 and re_Check(str(arg2))==0):
 
             answer = arg1 - arg2
+            Operations_track['subtraction']+=1
+            with lite.connect("calc.db") as con:
+                cur = con.cursor()
+                time = datetime.now().strftime("%d %B %Y")
+                cur.execute("insert into Calculations values (?,?,?,?)", (Operations_count, 'Sub', Operations_track['addition'], time))
+                con.commit()
+                Operations_count+=1
             return (jsonify({'answer':answer}), 200)
     except KeyError:
         abort(400)
@@ -401,15 +436,19 @@ def print_Store_args():
             time = datetime.now().strftime("%d %B %Y")
             cur.execute("SELECT * FROM Calculations")
             rows = cur.fetchall()
+            return_list=[]
 
-
+            '''
             with open("./check_report.txt", 'a+') as log:
                 for row in rows:
                     log.write(row)
+            '''
+            for row in rows:
+                return_list.append(row)
             
             
             con.commit()
-        return (jsonify({'answer':Memory_store,'table query':row}), 200)
+        return (jsonify({'answer':Memory_store,'table query':return_list}), 200)
     except KeyError:
         abort(400)
 
