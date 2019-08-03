@@ -81,7 +81,7 @@ def re_Check(string):
 
 @app.route('/')
 def home_page():
-    return 'Welcome to a simple yet powerful calculator by Megasoft'
+    return 'Welcome to a simple yet powerful calculator by Megasoft\n'
 
 
 
@@ -246,7 +246,7 @@ def div_args():
         arg2 = request.json['argument2']
         if(re_Check(str(arg1))==0 and re_Check(str(arg2))==0):
 
-            answer = arg1 / arg2
+            answer = round((arg1 / arg2),2)
             if (operation_date != last_operation_date):
                 operations_count=1
                 for k,v in operations_track.items():
@@ -331,11 +331,11 @@ def crt_args():
     if not request.json:
         abort(400)
     try:
-        arg = request.json['argument1']
+        arg = request.json['value']
         if(re_Check(str(arg))==0):
 
             arg=abs(float(arg))
-            answer = round((arg)**(1./3.),3)
+            answer = round((arg)**(1./3.),2)
             if (operation_date != last_operation_date):
                 operations_count=1
                 for k,v in operations_track.items():
@@ -425,7 +425,7 @@ def power_args():
         arg2 = request.json['argument2']
         if(re_Check(str(arg1))==0 and re_Check(str(arg2))==0):
 
-            answer = float(arg1) ** float((arg2))
+            answer = round((float(arg1) ** float((arg2))),2)
             if (operation_date != last_operation_date):
                 operations_count=1
                 for k,v in operations_track.items():
@@ -701,7 +701,7 @@ def acos_args():
         if(re_Check(str(value))==0 ):
             
             value=float(value)
-            answer=math.acos(value)
+            answer=round(math.acos(value),2)
             if (operation_date != last_operation_date):
                 operations_count=1
                 for k,v in operations_track.items():
@@ -748,7 +748,7 @@ def asin_args():
         if(re_Check(str(value))==0 ):
             
             value=float(value)
-            answer=math.asin(value)
+            answer=round(math.asin(value),2)
             if (operation_date != last_operation_date):
                 operations_count=1
                 for k,v in operations_track.items():
@@ -794,7 +794,7 @@ def atan_args():
         if(re_Check(str(value))==0 ):
             
             value=float(value)
-            answer=math.atan(value)
+            answer=round(math.atan(value),2)
             if (operation_date != last_operation_date):
                 operations_count=1
                 for k,v in operations_track.items():
@@ -840,7 +840,7 @@ def log_args():
         base = request.json['base']
         if(re_Check(str(number))==0 and re_Check(str(base))==0):
 
-            answer = math.log(float(number),int(base))
+            answer = round(math.log(float(number),int(base)),2)
             if (operation_date != last_operation_date):
                 operations_count=1
                 for k,v in operations_track.items():
@@ -905,7 +905,7 @@ def var_Remove_args():
                         new_conn=False
                     except:
                         pass
-                cur.execute("insert into Calculations values (?,?,?,?,?,?,?)", (operations_count, 'Clear Memory', operations_track['var_Remove'], var_json, answer, memory_store, time))
+                cur.execute("insert into Calculations values (?,?,?,?,?,?,?)", (operations_count, 'Clear Memory', operations_track['var_Remove'], var_json, memory_store, memory_store, time))
                 con.commit()
                 operations_count+=1
             return (jsonify({'answer':'cleared memory register'}), 200)
@@ -1058,8 +1058,9 @@ def query_by_Date():
                 return (jsonify({'response':'no records found for this date'}), 400)
             
             try:
+                filepath="report_" + query_date + ".csv"
 
-                with open("./check_report.csv", 'w') as file:
+                with open(filepath, 'w') as file:
                     csv_writer=csv.writer(file, delimiter=';')
                     csv_writer.writerow(['Id','Operation','Count','Variables','MR','Executed'])
                     for row in rows:
