@@ -30,7 +30,13 @@ This application performs the below functionalities:
 
 18. Store a value in memory
 19. Clear the memory
-20. Performing calculations with stored value
+20. Remove the value stored in memory register.
+21. Use stored value for calculations
+
+#Generate Reports
+
+22. Generate reports for given day.
+23. Generate reports within the given dates.
 
 
 #Prerequisistes for linting and testing
@@ -48,7 +54,17 @@ cd CalculatorLibrary
 
 #Usage
 
+To use command line interactive application
 python calculator.py
+
+To use via APIs with curl
+1. Open a new terminal / command prompt
+python calculator_api.py
+This launches the werkzeug server
+
+2. Open another terminal / command prompt
+Submit curl http requests
+
 
 
 #Automated tests
@@ -56,6 +72,10 @@ python calculator.py
 pytest -v --cov
 
 
-#Linting check
+#Linting check (Optional)
 
 flake8 --statistics
+Note: Linting hasn't been performed for this project.
+
+API Documentation:
+Check the project wiki on github for the API documentation.
