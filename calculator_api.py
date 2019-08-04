@@ -4,6 +4,7 @@
 from flask import (Flask, jsonify, request, abort, render_template)
 import math
 from collections import OrderedDict
+import os
 import re
 import csv
 import json
@@ -17,6 +18,7 @@ app = Flask(__name__)
 memory_store=""
 operations_count=1
 dateformat = '%Y-%m-%d'
+logpath="./reports/"
 last_operation_date=time.strftime(dateformat)
 con=None
 operations_track = OrderedDict()
@@ -201,7 +203,7 @@ def mul_args():
         arg2 = request.json['argument2']
         if(re_Check(str(arg1))==0 and re_Check(str(arg2))==0):
 
-            answer = arg1 * arg2
+            answer = round(float(arg1) * float(arg2),2)
             if (operation_date != last_operation_date):
                 operations_count=1
                 for k,v in operations_track.items():
@@ -246,7 +248,7 @@ def div_args():
         arg2 = request.json['argument2']
         if(re_Check(str(arg1))==0 and re_Check(str(arg2))==0):
 
-            answer = round((arg1 / arg2),2)
+            answer = round((float(arg1) / float(arg2)),2)
             if (operation_date != last_operation_date):
                 operations_count=1
                 for k,v in operations_track.items():
@@ -987,7 +989,7 @@ def print_Store_args():
                         new_conn=False
                     except:
                         pass
-            cur.execute("insert into Calculations values (?,?,?,?,?,?,?)", (operations_count, 'Dsiplay MR', operations_track['print_Store'], var_json, memory_store, memory_store, time))
+            cur.execute("insert into Calculations values (?,?,?,?,?,?,?)", (operations_count, 'Display MR', operations_track['print_Store'], var_json, memory_store, memory_store, time))
             con.commit()
             operations_count+=1
         return (jsonify({'answer':memory_store}), 200)
@@ -1043,7 +1045,7 @@ def add_sub_Store_args():
 
 @app.route('/query_by_Date', methods=['POST'])
 def query_by_Date():
-    global memory_store, operations_count
+    global memory_store, operations_count, logpath
     if not request.json:
         abort(400)
     try:
@@ -1058,11 +1060,16 @@ def query_by_Date():
                 return (jsonify({'response':'no records found for this date'}), 400)
             
             try:
-                filepath="report_" + query_date + ".csv"
+                if not os.path.exists(logpath):
+                    os.makedirs(logpath)
+            except Exception as e:
+                return (jsonify({'response':'unable to create reports folder'}), 400)
+            try:
+                filepath=logpath + query_date + ".csv"
 
                 with open(filepath, 'w') as file:
                     csv_writer=csv.writer(file, delimiter=';')
-                    csv_writer.writerow(['Id','Operation','Count','Variables','MR','Executed'])
+                    csv_writer.writerow(['Id','Operation','Count','Variables','Result','MR','Executed'])
                     for row in rows:
                         csv_writer.writerow(row)
                         #og.write("%s\n" % item)
@@ -1076,7 +1083,7 @@ def query_by_Date():
 
 @app.route('/query_by_range_Date', methods=['POST'])
 def query_by_range_Date():
-    global memory_store, operations_count
+    global memory_store, operations_count, logpath
     if not request.json:
         abort(400)
     try:
@@ -1091,10 +1098,16 @@ def query_by_range_Date():
                 return (jsonify({'response':'no records found for this date'}), 400)
             
             try:
+                if not os.path.exists(logpath):
+                    os.makedirs(logpath)
+            except Exception as e:
+                return (jsonify({'response':'unable to create reports folder'}), 400)
+            try:
+                filepath=logpath + query_date1 + "_" + query_date2 + ".csv"
 
-                with open("./check_report.csv", 'w') as file:
+                with open("filepath", 'w') as file:
                     csv_writer=csv.writer(file, delimiter=';')
-                    csv_writer.writerow(['Id','Operation','Count','Variables','MR','Executed'])
+                    csv_writer.writerow(['Id','Operation','Count','Variables','Result','MR','Executed'])
                     for row in rows:
                         csv_writer.writerow(row)
                         #og.write("%s\n" % item)
