@@ -1323,6 +1323,7 @@ def query_by_Date():
                     for row in rows:
                         csv_writer.writerow(row)
                         #og.write("%s\n" % item)
+                print("Successfully generated report file.\n")
             except IOError as e:
                 print("Unable to create file for the operation\n")
             con.commit()
@@ -1367,6 +1368,7 @@ def query_by_range_Date():
                     for row in rows:
                         csv_writer.writerow(row)
                         #og.write("%s\n" % item)
+                print("Successfully generated report file.\n")
             except IOError as e:
                 print("Unable to create file for the operation\n")
             con.commit()
