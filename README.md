@@ -68,6 +68,7 @@ pytest -v --cov
 
 ## Linting check (Optional)
 flake8 --statistics
+
 Note: Linting hasn't been performed for this project.
 
 ## API Documentation:
