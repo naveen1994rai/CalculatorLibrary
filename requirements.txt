@@ -1,6 +1,14 @@
 #For automated testing of the calculator module
 pytest
+
+#For chechking the coverage of the units for testing.
 pytest-cov
 
 #For linting, can choose any linter of your choice
 flake8
+
+#For web framework , creating APIs
+flask
+
+#WSGI Library, it comes with a dev server
+werkzeug
