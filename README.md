@@ -49,6 +49,7 @@ flake8
 #Workdir
 
 git clone https://github.com/naveen1994rai/CalculatorLibrary.git
+
 cd CalculatorLibrary
 
 
@@ -64,7 +65,6 @@ This launches the werkzeug server
 
 2. Open another terminal / command prompt
 Submit curl http requests
-
 
 
 #Automated tests
