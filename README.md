@@ -56,14 +56,19 @@ cd CalculatorLibrary
 #Usage
 
 To use command line interactive application
+
 python calculator.py
 
 To use via APIs with curl
+
 1. Open a new terminal / command prompt
+
 python calculator_api.py
+
 This launches the werkzeug server
 
 2. Open another terminal / command prompt
+
 Submit curl http requests
 
 
