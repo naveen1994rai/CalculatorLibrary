@@ -76,5 +76,6 @@ Check the project wiki on github for the API documentation.
 
 ## Note (For Python3 and Windows)
 * If using python3, replace raw_input() func. with input() in calculator.py
-* If using Windows, escape additional single or double quotes with a backslash whe using curl
+* If using Windows, escape additional single or double quotes with a backslash whe using curl.
+
 curl -X POST -H "Content-Type: application/json"  -d "{ \"start\":\"2019-08-01\",\"end\":\"2019-08-03\" }" http://127.0.0.1:5000/query_by_range_Date
