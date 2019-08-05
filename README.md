@@ -17,7 +17,7 @@
 ## Trigonometric functionalities
 11. Cosine of an angle in radians/degrees
 12. Sine of an angle in radians/degrees
-13. Tan of an angle in radians
+13. Tan of an angle in radians/degrees
 14. Inverse cosine
 15. Inverse sine
 16. Inverse tan
@@ -25,9 +25,9 @@
 
 ## Memory register
 18. Store a value in memory
-19. Clear the memory
+19. Display the memory register
 20. Remove the value stored in memory register.
-21. Use stored value for calculations
+21. Use stored value for calculations (add/sub)
 
 ## Generate Reports
 22. Generate reports for given day.
