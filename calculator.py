@@ -22,7 +22,7 @@ This module performs various mathematical calculations such as :
 16. Inverse tan
 17. Logarathmic for any given base, default base is e.
 18. Store a value in memory
-19. Clear the memory
+19. Display the memory
 20. Remove the value stored in memory register.
 21. Use stored value for calculations
 22. Generate reports for given day.
