@@ -1,5 +1,5 @@
 # CalculatorLibrary
-### Calculator using python with unit tests. This application performs the below functionalities:
+### Calculator using python with unit tests and Continuous Integration. This application performs the below functionalities:
 
 ## Arithmetic operations
 1.  Addition
