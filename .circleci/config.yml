@@ -14,7 +14,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            pip install --user -r requirements.txt
+            sudo pip install -r requirements.txt
       # Step 3: run linter and tests
       - run:
           name: run tests
