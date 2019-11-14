@@ -1,5 +1,5 @@
 # CalculatorLibrary
-### Calculator using python with unit tests and continuous integration with CircleCI. This application performs the below functionalities:
+### Scientific Calculator using python with unit tests and continuous integration with CircleCI. This application performs the below functionalities:
 
 ## Arithmetic operations
 1.  Addition
